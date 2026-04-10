@@ -1,0 +1,54 @@
+Image Distribution ->
+- Image distribution refers to how container images move from developers to production systems.
+
+Distribution Flow >
+- Developer builds an image locally
+- Image is pushed to a registry
+- Registry stores the image securely
+- Servers pull the image when required
+- Containers are created from the image
+
+Push and Pull Operations ->
+Push Operation :
+- Uploads image layers from local system to registry
+- Requires authentication
+- Only new or changed layers are pushed
+
+Pull Operation :
+- Downloads image layers from registry to system
+- Uses caching to avoid re-downloading
+- Faster for repeated deployments
+
+Role of Image Registry in CI/CD Pipelines ->
+In modern DevOps workflows:
+- Code is committed to Git
+- CI system builds the container image
+- Image is pushed to registry
+- CD system pulls the image
+- Application is deployed automatically
+
+--> Registry acts as a bridge between CI and CD
+
+Comparison: Public vs Private Registries ->
+Feature   	Public Registry	          Private Registry
+Access	    Open	                  Restricted
+Security	Lower	                  High
+Cost	    Mostly free	              Paid
+Use Case	Learning, open source	  Enterprise, production
+
+MCQ Questions / Answers ->
+
+What is the primary purpose of an image registry?
+-> To store and distribute container images
+
+Which component represents the version of the image?
+-> Tag
+
+Which registry is used in enterprise environments?
+-> Private registry
+
+In CI/CD pipelines, registry acts as:
+-> Bridge between CI and CD
+
+Conclusion ->
+Image distribution and registries play a critical role in DevOps by enabling smooth, consistent, and automated deployment pipelines. They ensure that applications move efficiently from development to production with reliability and version control.

@@ -1,0 +1,48 @@
+Control groups ->
+Control Groups (cgroups) are Linux kernel features used to limit, control, and monitor resource usage of processes.
+
+They ensure that:
+- No container can monopolize system resources
+- Resources like CPU, memory, and I/O are fairly shared
+
+👉 “Namespaces isolate, cgroups control.”
+
+Why cgroups are Important
+-> Without cgroups:
+- One container could consume all CPU or RAM
+- Other containers may slow down or crash
+- The host system could become unstable
+
+Resource Control Using cgroups ->
+1. CPU Control
+- Limits CPU usage for containers
+- Assigns CPU shares to control priority
+
+2. Memory Control
+- Sets maximum memory limit
+- Can terminate (kill) container if limit is exceeded
+
+3. Disk I/O Control
+- Limits read/write speeds
+- Prevents excessive disk usage by one container
+
+4. Network Control (Indirectly)
+- Managed through traffic shaping mechanisms
+- Controls bandwidth usage
+- Working Concept
+- Each container is assigned resource limits
+- The Linux kernel continuously monitors usage
+
+If limits are exceeded:
+- Resources are restricted
+- Or the container is stopped
+
+Real-World Analogy
+cgroups are like electricity meters in apartments:
+
+- Each flat has a fixed usage limit
+- One tenant cannot consume all electricity
+- Ensures fair usage for everyone
+
+Conclusion ->
+cgroups play a vital role in containerization by managing and controlling resource allocation. Combined with namespaces, they provide a complete system for secure, efficient, and balanced container execution.

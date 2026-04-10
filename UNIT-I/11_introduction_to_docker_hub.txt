@@ -1,0 +1,45 @@
+Introduction to Docker Hub ->
+- Docker Hub is a centralized repository used to store, manage, and share Docker container images.
+
+Features of Docker Hub ->
+- Supports public and private repositories
+- Provides official images (verified and secure)
+- Enables automated builds from source code
+- Allows easy sharing and distribution of images
+
+Importance in DevOps ->
+- Enables build once, deploy anywhere
+- Simplifies CI/CD workflows
+- Ensures consistency across environments
+- Facilitates collaboration among teams
+
+Docker Architecture ->
+Key Components :
+Docker Client
+- Interface used by users to interact with Docker
+
+Docker Daemon
+- Background service that manages containers and images
+
+Docker Images
+- Read-only templates used to create containers
+
+Containers
+- Running instances of Docker images
+- Docker Registry (Docker Hub)
+- Stores and distributes images
+
+Docker Lifecycle ->
+Stages :
+- Build → Create a container image
+- Ship → Push/share image via Docker Hub
+- Run → Create and start containers
+
+Container States :
+- Created → Container is initialized but not running
+- Running → Container is actively executing
+- Paused → Container processes are temporarily stopped
+- Stopped → Container execution is halted
+
+Conclusion ->
+Docker Hub and Docker architecture together form the backbone of container-based development. They simplify building, sharing, and running applications efficiently, making them essential tools in modern DevOps practices.

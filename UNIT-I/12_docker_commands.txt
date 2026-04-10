@@ -1,0 +1,112 @@
+1. Image Management Commands
+docker pull ubuntu
+- Pull Image → Downloads the Ubuntu image from Docker Hub
+
+docker images
+- List Images → Displays all downloaded images
+
+docker rmi ubuntu
+- Remove Image → Deletes a specific image
+
+2. Container Lifecycle Commands
+docker run ubuntu
+- Create & Run Container → Runs a container from image
+
+docker run -it ubuntu /bin/bash
+- Run Interactive Container → Terminal access inside container
+
+docker stop <container_id>
+- Stop Container → Stops a running container
+
+docker start <container_id>
+- Start Container → Starts a stopped container
+
+docker rm <container_id>
+- Remove Container → Deletes a container
+
+3. Nginx Deployment Example
+docker pull nginx
+- Pull Nginx Image
+
+docker run -d -p 8080:80 --name mynginx nginx
+- Run Container in Detached Mode with Port Mapping
+
+docker ps
+- List Running Containers
+
+docker stop mynginx
+- Stop Container
+
+docker start mynginx
+- Start Container
+
+docker rm -f mynginx
+- Force Remove Container
+
+docker rmi nginx
+- Remove Image
+
+4. Container Inspection & Debugging
+docker exec -it <container_id> bash
+- Access Container Terminal
+
+docker logs <container_id>
+- View Logs
+
+docker inspect <container_id>
+- Detailed Configuration (JSON)
+
+docker stats
+- Live Resource Usage
+
+docker top <container_id>
+- Running Processes
+
+5. Background & Detached Containers
+docker run -dit --name myubuntu ubuntu
+- Run Container in Background (Interactive)
+
+docker start myubuntu
+- Start Existing Container
+
+6. Volume Management Commands
+docker volume create myvolume
+- Create Volume
+
+docker volume ls
+- List Volumes
+
+docker volume inspect myvolume
+- Inspect Volume
+
+docker volume rm myvolume
+- Remove Volume
+
+7. Network Management Commands
+docker network ls
+- List Networks
+
+docker network create mynetwork
+- Create Network
+
+docker network inspect mynetwork
+- Inspect Network
+
+docker network rm mynetwork
+- Remove Network
+
+8. System Cleanup Commands
+docker system prune -a
+- Clean Unused Resources
+
+docker system prune -a --volumes
+- Full Cleanup (Including Volumes)
+
+docker stop $(docker ps -aq)
+- Stop All Containers
+
+docker rm $(docker ps -aq)
+- Remove All Containers
+
+docker rmi $(docker images -q)
+- Remove All Images

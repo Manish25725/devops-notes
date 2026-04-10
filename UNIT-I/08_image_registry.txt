@@ -1,0 +1,55 @@
+Image Registry ->
+An image registry is a centralized repository used to store, manage, version, and distribute container images.
+
+Purpose of Image Registry ->
+It enables:
+- Sharing images across teams and environments
+- Consistent deployment in development, testing, and production
+- Integration with CI/CD pipelines
+
+Analogy in DevOps ->
+An image registry plays a similar role as:
+
+GitHub → for source code
+Maven Central → for Java libraries
+
+Why Image Registries are Required ->
+Without a Registry :
+- Each system must build images independently
+- High inconsistency across environments
+- Manual software installation
+- No version control of application environments
+
+With a Registry :
+- Build once, deploy everywhere
+- Faster deployments
+- Version-controlled environments
+- Easy rollback capability
+
+Types of Image Registries ->
+1. Public Image Registries
+Public registries provide open access to container images.
+
+Characteristics
+- Images are publicly visible
+- Anyone can pull images
+- Often free
+- Used for base images and open-source applications
+
+2. Private Image Registries
+Private registries restrict access using authentication and authorization.
+
+Characteristics
+- Secure and controlled access
+- Widely used in enterprises
+- Stores proprietary applications
+- Integrated with IAM and RBAC
+
+Examples ->
+- AWS Elastic Container Registry (ECR)
+- Azure Container Registry (ACR)
+- GitHub Container Registry (GHCR)
+- On-premise private registry
+
+Conclusion ->
+Image registries are essential in DevOps for managing container images efficiently. They ensure consistency, enable faster deployments, and support version control, making them a critical component in modern application delivery pipelines.

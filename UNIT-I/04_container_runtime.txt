@@ -1,0 +1,61 @@
+Container Runtime -> 
+1. A container runtime is the software responsible for creating, starting, stopping, and managing containers on a host system.
+2. It acts as the execution engine that converts a container image into a running container.
+
+In simple words:
+“Container runtime is what actually runs containers.”
+
+Container Image vs Container Runtime ->
+1. A container image is a read-only package that contains:
+- Application code
+- Dependencies
+- Libraries
+2. To execute this image, a container runtime is required.
+
+The runtime performs tasks such as:
+- Creating an isolated environment
+- Applying resource limits (CPU, memory)
+- Starting the application process
+- Monitoring execution
+- Stopping and removing the container when needed
+
+Types of Container Runtimes ->
+1. High-Level Runtimes
+- These are used by developers and DevOps tools.
+
+Examples:
+- Docker Engine
+- containerd
+- CRI-O (Kubernetes-focused)
+
+Responsibilities:
+- Pulling container images
+- Managing networking
+- Handling storage
+- Managing container lifecycle
+
+2. Low-Level Runtimes 
+These are responsible for actually running the container process.
+
+Example:
+- runc (OCI-compliant)
+
+They directly interact with:
+- Linux Kernel
+- Namespaces (for isolation)
+- cgroups (for resource management)
+
+Working Flow ->
+1. Developer creates a container image
+2. High-level runtime pulls and prepares the image
+3. Low-level runtime:
+- Creates isolated environment
+- Applies system-level controls
+- Runs the application
+
+Real-World Analogy ->
+- Container Image → Packed lunch box
+- Container Runtime → Person who opens it, serves food, and cleans up
+
+Conclusion ->
+Container runtime is a crucial component in containerization. It ensures that container images are properly executed by handling isolation, resource management, and lifecycle operations. Together, high-level and low-level runtimes make container execution efficient and reliable in modern DevOps environments.

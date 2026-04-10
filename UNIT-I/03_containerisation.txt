@@ -1,0 +1,52 @@
+Containerisation -> 
+1. Containerization is a lightweight virtualization technique that allows applications to run in isolated environments called containers.
+2. Unlike virtual machines, containers do not carry an entire operating system. They use the minimum required OS components and share the host operating system.
+
+Key Characteristics of Containers ->
+- Containers share the host OS
+- They include only the application and its dependencies
+- They are lightweight and fast
+- They start in seconds
+- They consume minimal resources
+- Multiple containers can run on a single machine (dozens or even hundreds)
+
+Evolution of Application Deployment ->
+1. Monolithic Architecture
+- Applications were built as a single unit
+- Deployed on physical servers
+- Difficult to scale and maintain
+
+2. Virtual Machine-Based Architecture
+- Applications split into components (frontend, backend, database)
+- Hosted on Virtual Machines (VMs)
+- Improved isolation but had higher resource usage
+
+3. Microservices Architecture
+- Applications are divided into small, independent services
+- Each service runs separately and communicates via APIs
+- Requires lightweight and scalable deployment solutions
+
+This led to the rise of containerization tools like Docker
+
+Why Containerization?
+Containerization solves many limitations of virtualization:
+- Lightweight Isolation
+No need for a full OS for each application
+- Faster Deployment
+Containers start almost instantly
+- Efficient Resource Utilization
+More applications can run on the same hardware
+- High Scalability
+Easy to scale applications up or down
+- Portability
+Containers run consistently across different environments (development, testing, production)
+
+Role in DevOps ->
+Containerization is a key part of DevOps because:
+- It supports Continuous Integration and Continuous Deployment (CI/CD)
+- Ensures consistent environments across teams
+- Works well with microservices architecture
+- Integrates with tools like Docker and Kubernetes
+
+Conclusion ->
+Containerization provides a fast, efficient, and scalable way to deploy applications. It overcomes the limitations of virtualization by offering lightweight environments, better portability, and seamless integration with modern DevOps practices.

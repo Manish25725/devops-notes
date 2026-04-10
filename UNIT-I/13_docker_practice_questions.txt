@@ -1,0 +1,141 @@
+Questions With Answers --->
+
+7. Task 1 – Resource Mismanagement in Containers
+Q1. Which container feature was misconfigured or missing?
+Answer: cgroups (memory limits not set)
+
+docker run -d --name app_container nginx
+- Above command has no memory limit, so container can consume unlimited RAM.
+
+Q2. Which kernel mechanism should have prevented this?
+Answer: cgroups (memory control)
+
+docker run -d \
+  --memory="512m" \
+  --memory-swap="512m" \
+  --name app_container \
+  nginx
+
+- This ensures:
+Max memory = 512MB
+Container cannot exceed limit
+
+Q3. Would namespaces alone solve this issue? Why?
+Answer: NO
+
+# Namespaces provide isolation only (example)
+docker run -d --name isolated_container nginx
+
+- Namespaces only:
+Isolate processes
+Do NOT limit resource usage
+ 
+- Resource control requires cgroups
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Task 1 – Container Resource & Isolation
+Q1. Which Linux feature prevents Container A from consuming all CPU?
+Answer: cgroups (CPU control)
+
+docker run -d \
+  --cpus="1.0" \
+  --name containerA \
+  ubuntu
+
+- Limits CPU usage so one container cannot consume all CPU resources
+
+Q2. Which feature ensures Container B cannot see processes of Container C?
+Answer: PID Namespace
+
+docker run -d \
+  --name containerB \
+  ubuntu
+
+- Each container gets its own process space
+- Processes are isolated and not visible across containers
+
+Q3. Which namespace allows all three containers to use port 80 internally?
+Answer: Network Namespace
+
+# Container A
+docker run -d -p 8081:80 nginx
+
+# Container B
+docker run -d -p 8082:80 nginx
+
+# Container C
+docker run -d -p 8083:80 nginx
+
+- Internally all containers use port 80
+- Each container has its own network stack and IP
+
+
+--------------------------------------------------------------------------------------------------
+
+
+Task 2: Run Ubuntu Container in Interactive Mode
+Question : A student wants to practice Linux commands inside Docker. Run an Ubuntu container in interactive mode using bash and exit safely after execution.
+
+Commands
+docker run -it ubuntu bash
+exit
+
+
+-----------------------------------------------------------------------------------------------------------
+
+
+Task 3: Troubleshoot a Running Container
+Question : You need to troubleshoot a running container by entering its terminal and checking logs. Write commands to:
+- Open bash inside container
+- View logs
+- Show running processes
+
+Commands
+docker exec -it <container_id> bash
+docker logs <container_id>
+docker top <container_id>
+
+
+--------------------------------------------------------------------------------------------------------------
+
+
+Task 4: Create and Verify Docker Network
+Question : Create a custom Docker network named mynetwork and verify its configuration.
+
+Commands
+docker network create mynetwork
+docker network ls
+docker network inspect mynetwork
+
+
+----------------------------------------------------------------------------------------------------------
+
+
+Task 5: Deploy Apache HTTP Server using Docker
+Question : You are a DevOps trainee and need to deploy the Apache HTTP Server (httpd) using Docker for testing a static website.
+Perform the following tasks:
+- Pull the Apache image
+- Verify the image
+- Run container in detached mode
+- Map port 8081 (host) to port 80 (container)
+- Check running containers
+- Access the web server
+
+Commands
+# Pull Apache image
+docker pull httpd
+
+# Verify image
+docker images
+
+# Run container
+docker run -d -p 8081:80 --name apache-web httpd
+
+# Check running containers
+docker ps
+
+Access in Browser
+http://localhost:8081

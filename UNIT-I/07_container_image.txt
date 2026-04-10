@@ -1,0 +1,54 @@
+Container Image –>
+- A container image is a read-only blueprint used to create containers.
+- It contains everything required to run an application:
+
+- Base OS (minimal)
+- Application code
+- Libraries & dependencies
+- Runtime
+- Configuration
+
+Images are immutable – once built, they do not change.
+
+Example
+python:3.11-slim
+
+This image already includes:
+- Minimal Linux OS
+- Python 3.11
+- Standard Python libraries
+- Image Layers
+
+Each container image is built as a stack of layers.
+
+How Layers Work ->
+- Each instruction in a Dockerfile creates one layer
+- Layers are stacked on top of each other
+- Final image = combination of all layers
+
+Characteristics of Layers ->
+- Immutable → Cannot be changed once created
+- Cached → Reused if no changes are made
+- Reusable → Shared across multiple images
+
+Example (Conceptual Dockerfile) ->
+FROM python:3.11-slim      # Base layer
+COPY . /app                # Layer 2
+RUN pip install -r requirements.txt   # Layer 3
+CMD ["python", "app.py"]  # Final layer
+
+Benefits of Layered System ->
+1. Faster Builds
+- Docker reuses unchanged layers using cache
+- Only modified layers are rebuilt
+
+2. Smaller Storage
+- Common layers are shared between images
+- Reduces duplication
+
+3. Faster Deployment
+- Only missing layers are downloaded
+- Speeds up image transfer
+
+Conclusion ->
+Container images provide a consistent and portable way to package applications. The layered architecture improves efficiency by enabling faster builds, optimized storage, and quick deployments, making it essential for modern DevOps workflows.

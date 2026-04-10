@@ -1,0 +1,42 @@
+Standard Image Naming Format
+
+Container images follow a standard naming format:
+            <registry>/<namespace>/<image>:<tag>
+
+Example :
+docker.io/manpreet/webapp:v1
+
+Components of Image Name :
+
+Component	Meaning
+registry	Location of image
+namespace	User or organization
+image	    Application name
+tag	        Version or label
+
+Explanation of Example :
+docker.io → Registry (Docker Hub)
+manpreet → Namespace (user)
+webapp → Image name
+v1 → Tag (version)
+
+Tags in Container Images ->
+- Tags are used to identify different versions of the same image.
+- They help in version control and environment management.
+
+Common Tagging Strategies ->
+Tag	     Purpose
+latest	 Default tag (not recommended in production)
+v1, v2	 Versioned releases
+dev	     Development build
+qa	     Testing build
+prod	 Stable production build
+
+Why Tagging is Important ->
+- Helps track different versions of applications
+- Enables rollback to previous versions
+- Supports environment-specific deployments
+- Improves CI/CD pipeline management
+
+Conclusion ->
+Image naming and tagging provide a standardized way to identify, version, and manage container images. Proper tagging ensures better control, traceability, and reliability in DevOps workflows.

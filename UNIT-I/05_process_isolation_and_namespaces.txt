@@ -1,0 +1,60 @@
+Process Isolation -> 
+1. Process isolation ensures that each container runs as if it is independent and alone on the system, even though multiple containers share the same operating system kernel.
+2. This isolation is achieved using Linux namespaces.
+
+What are Namespaces?
+Namespaces are Linux kernel features that partition system resources, so that processes can only see what belongs to them.
+
+👉 In simple words ->
+“Namespaces create the illusion of a separate system for each container.”
+
+Types of Namespaces
+1. PID Namespace (Process Isolation)
+- Each container has its own process tree
+- Process IDs (PIDs) inside a container start from 1
+- Containers cannot see processes of:
+- Host system
+- Other containers
+
+2. Mount Namespace
+- Each container has its own filesystem view
+- Changes inside a container do not affect the host system
+
+3. UTS Namespace
+- Allows each container to have its own hostname
+- Containers appear as separate systems
+
+4. User Namespace (Advanced)
+- Maps container users to non-root users on the host
+- Enhances security by limiting privileges
+- Network Isolation (Concept)
+
+Each container gets:
+- Its own IP address
+- Its own network stack
+- Its own ports
+
+Containers can run applications on the same port internally without conflict.
+
+Example:
+Container 1 → 172.17.0.2:80 (Nginx)
+Container 2 → 172.17.0.3:80 (Nginx)
+Container 3 → 172.17.0.4:80 (Nginx)
+Real-World Analogy
+
+Namespaces are like separate cabins in a train:
+- Same engine → Kernel
+- Different cabins → Containers
+- Passengers cannot see each other → Isolation
+- Example Scenario: Web Application Container
+
+Suppose a Python-based web application runs inside a container:
+- App (PID 1)      → Main web server
+ ├── worker-1    → Handles client requests
+ ├── worker-2    → Handles client requests
+ └── logger      → Writes logs
+- All processes are visible only inside the container
+- They are isolated from host and other containers
+
+Conclusion ->
+Process isolation is a core feature of containerization. Using Linux namespaces, containers achieve secure and efficient separation while still sharing the same OS kernel, enabling lightweight and scalable application deployment.

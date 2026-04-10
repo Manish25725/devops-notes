@@ -1,0 +1,53 @@
+Virtualisation -> 
+1. Virtualization is the process of partitioning a physical server into multiple virtual servers.
+2. The process of partitioning is carried out using a software called a hypervisor.
+3. After partitioning, the virtual servers (Virtual Machines - VMs) act and perform just like physical servers.
+4. Essentially, virtualization allows the same hardware setup to be used more efficiently, freeing resources for other tasks or reducing the need for additional hardware.
+
+How Virtualization Works ->
+- A hypervisor sits between hardware and operating systems
+- It divides physical resources (CPU, RAM, storage) into multiple virtual environments
+- Each virtual machine runs its own OS and applications independently
+- Multiple VMs can run on a single physical server
+
+Advantages of Virtualization ->
+- Enhanced Performance
+Efficient utilization of hardware improves overall system performance
+- Promotes Agile IT Infrastructure
+Quick provisioning and deployment of virtual machines
+- Optimal Resource Utilization
+Hardware resources are used efficiently without wastage
+- Better Disaster Management
+Easy backup and recovery in case of hardware failures
+- Improved Security
+Infected virtual machines can be isolated from others and the host system
+- Space Saving
+Reduces the need for multiple physical servers
+- Cost Savings
+Lower capital investment in hardware and reduced maintenance costs
+
+Drawbacks of Virtualization ->
+- Heavy Resource Overhead
+Each VM requires a full OS, consuming significant resources
+- Slow Boot Time and Poor Agility
+VMs take longer to start compared to lightweight solutions
+- Inefficient Scalability
+Scaling VMs can be slower and resource-intensive
+- Limited Application Portability
+Applications may face compatibility issues across environments
+- Higher Management Complexity
+Managing multiple VMs and hypervisors can be complex
+- Increased Infrastructure Cost
+Requires powerful hardware to support multiple VMs
+
+Evolution Towards Containerization ->
+1. The limitations of virtualization led to the development of containerization.
+2. Containerization addresses these issues by:
+- Providing lightweight isolation (no full OS required)
+- Enabling faster deployment and startup
+- Offering better portability across environments
+- Supporting efficient scalability
+- Integrating seamlessly with DevOps practices and microservices architecture
+
+Conclusion ->
+Virtualization revolutionized resource utilization by allowing multiple virtual machines on a single physical system. However, its limitations in performance, scalability, and efficiency led to the emergence of containerization, which is now widely used in modern DevOps environments.

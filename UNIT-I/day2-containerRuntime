@@ -1,0 +1,212 @@
+# Container Runtime
+
+A **container runtime** is the software responsible for running containers on a system.  
+It manages the **container lifecycle**, including creating, starting, stopping, and deleting containers.  
+It also handles **resource isolation, filesystem setup, and networking** required for containers.
+
+In simple terms, a **container runtime is the engine that runs containerized applications**.
+
+---
+
+# Types of Container Runtime
+
+Container runtimes are mainly divided into two types:
+
+1. High-Level Container Runtime  
+2. Low-Level Container Runtime  
+
+---
+
+## 1. High-Level Container Runtime
+
+A **high-level runtime** provides user-friendly tools, APIs, and command-line interfaces to manage containers.  
+It interacts with **low-level runtimes** to actually run the containers.
+
+### Examples
+- Docker  
+- containerd  
+- CRI-O  
+
+### Functions
+
+- Pull container images from container registries
+- Manage container lifecycle (create, start, stop, remove)
+- Provide CLI commands for users
+- Communicate with orchestration tools such as Kubernetes
+- Manage container images and storage
+
+### Example Flow
+
+
+High-level runtimes focus mainly on **container management and usability**.
+
+---
+
+## 2. Low-Level Container Runtime
+
+A **low-level runtime** directly interacts with the **Linux kernel** to create and run containers.
+
+It performs the actual container execution by configuring Linux kernel features such as:
+
+- Namespaces
+- cgroups
+- filesystem isolation
+- process execution
+
+### Examples
+
+- runc  
+- crun  
+- Kata Containers  
+
+### Functions
+
+- Create container processes
+- Configure namespaces for isolation
+- Configure cgroups for resource management
+- Execute containers according to **OCI (Open Container Initiative) standards**
+
+Low-level runtimes focus on **container execution and isolation**.
+
+---
+
+# Container Runtime Architecture
+
+
+Explanation:
+
+1. The user or orchestration platform gives a command.
+2. The high-level runtime processes the request.
+3. The low-level runtime creates the container process.
+4. The Linux kernel provides isolation using namespaces and cgroups.
+5. The container application starts running.
+
+---
+
+# Summary
+
+| Type | Purpose | Examples |
+|-----|-----|-----|
+| High-Level Runtime | Manage container lifecycle and user interaction | Docker, containerd, CRI-O |
+| Low-Level Runtime | Actually run containers using kernel features | runc, crun, Kata Containers |
+
+---
+
+# Process Isolation in Containers
+
+**Process isolation** ensures that each container runs as if it is the only system running on the machine, even though multiple containers share the same operating system kernel.
+
+This isolation prevents containers from:
+
+- Seeing processes of other containers
+- Accessing other containers' files
+- Interfering with system resources
+
+Process isolation is achieved using **Linux namespaces**.
+
+---
+
+# Linux Namespaces
+
+A **namespace** is a Linux kernel feature that isolates system resources for a group of processes.
+
+Each container gets its own namespaces, which allows it to behave like an independent system.
+
+Some important namespaces used in containers include:
+
+- PID Namespace
+- Mount Namespace
+- UTS Namespace
+- User Namespace
+
+---
+
+# PID Namespace
+
+The **PID namespace** isolates the **process ID number space**.
+
+This means processes inside a container can only see and interact with processes inside the same container.
+
+### How it works
+
+In Linux, every process has a **Process ID (PID)**.  
+Normally, all processes share the same PID space.
+
+With PID namespaces:
+
+- Each container has its own PID numbering.
+- The first process inside a container usually has **PID 1**.
+
+Example inside a container:
+
+
+The container only sees this filesystem even though the host machine may contain many more directories.
+
+### Advantages
+
+- Filesystem isolation
+- Secure file access
+- Independent root filesystem for containers
+
+---
+
+# UTS Namespace
+
+The **UTS namespace** isolates **system identifiers** such as:
+
+- Hostname
+- Domain name
+
+UTS stands for **Unix Time Sharing System**.
+
+### How it works
+
+Each container can have its own hostname, separate from the host machine.
+
+Example:
+
+Host machine hostname:
+
+
+Inside the container, when the `hostname` command is executed, it will show the container hostname instead of the host hostname.
+
+### Advantages
+
+- Containers appear as separate systems
+- Useful in distributed environments
+
+---
+
+# User Namespace
+
+The **user namespace** isolates **user IDs (UID) and group IDs (GID)** between the container and the host system.
+
+### How it works
+
+A user inside a container may appear as **root**, but it is mapped to a **non-root user on the host system**.
+
+Example mapping:
+
+| Container User | Host User |
+|---|---|
+| root (UID 0) | UID 1000 |
+
+This means:
+
+- Inside the container → root privileges
+- On the host system → limited permissions
+
+### Advantages
+
+- Strong security isolation
+- Prevents containers from gaining root access on the host system
+
+---
+
+# Conclusion
+
+Container runtimes are responsible for executing containers and managing their lifecycle.  
+They work with Linux kernel features such as **namespaces and cgroups** to provide isolation, security, and efficient resource management.
+
+Namespaces play a critical role in containers by isolating system resources like **processes, filesystems, hostnames, and users**, allowing containers to run independently on the same operating system.
+
